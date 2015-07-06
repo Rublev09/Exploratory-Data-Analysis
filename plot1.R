@@ -19,7 +19,7 @@ hist(newdata$Global_active_power,
      main = "Global Active Power", 
      ylab = "Frequency", 
      xlab = "Global Active Power (kilowatts)", 
-     col = "red")                                                                                   1200), xlim = c(0, 6), xaxp = c(0, 6, 3))
+     col = "red")                                                                                  
 
 # Saving to file
 dev.copy(png, file="plot1.png", height=480, width=480)
