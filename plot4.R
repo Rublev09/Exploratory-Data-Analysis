@@ -13,7 +13,7 @@ rm(data)
 datetime <- paste(as.Date(newdata$Date), newdata$Time)
 newdata$Datetime <- strptime(datetime, format="%Y-%m-%d %H:%M:%S", tz="")
 
-# Matrix 2x2 for plotting each graph in the graphic canvas
+# Matrix 2x2 for the graphic canvas
 par(mfrow=c(2,2))
 
 # Line chart NW 
