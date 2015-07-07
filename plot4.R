@@ -13,18 +13,29 @@ rm(data)
 datetime <- paste(as.Date(newdata$Date), newdata$Time)
 newdata$Datetime <- strptime(datetime, format="%Y-%m-%d %H:%M:%S", tz="")
 
-# Line chart 
+# Matrix 2x2 for plotting each graph in the graphic canvas
+par(mfrow=c(2,2))
+
+# Line chart NW 
+plot(newdata$Datetime, newdata$Global_active_power, 
+     type="l", xlab="", ylab="Global Active Power")
+
+# Line chart NE 
+plot(newdata$Datetime, newdata$Voltage, 
+     type="l", xlab="datetime", ylab="Voltage")
+
+# Line chart SW 
 plot(newdata$Datetime, newdata$Sub_metering_1, 
      type="l", xlab="", ylab="Energy sub metering")
-
-# Adds lines: Sub_metering_2 (red) and Sub_metering_3 (blue)
 lines(newdata$Datetime, newdata$Sub_metering_2, col="red")
 lines(newdata$Datetime, newdata$Sub_metering_3, col="blue")
-
-# Add legend
 legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-       col=c("black", "red", "blue"), lwd=1)                                                                                 
+       col=c("black", "red", "blue"), lwd=1)
+
+# Line chart SE 
+plot(newdata$Datetime, newdata$Global_reactive_power, 
+     type="l", xlab="datetime", ylab="Global_reactive_power")
 
 # Save file .png 480x480
-dev.copy(png, file="plot3.png", height=480, width=480)
+dev.copy(png, file="plot4.png", height=480, width=480)
 dev.off()
